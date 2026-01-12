@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import IssueDetails from "../pages/IssueDetails";
-import IssuesList from "../pages/IssuesList";
+import IssuesList from "../pages/IssuesPage";
 import CreateNewIssue from "../pages/CreateNewIssue";
 
 
