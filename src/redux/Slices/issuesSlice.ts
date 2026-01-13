@@ -28,7 +28,7 @@ const issuesSlice = createSlice({
     addIssue(state, action: PayloadAction<Omit<Issue, "id">>) {
       const issue: Issue = {
         ...action.payload,
-        id: crypto.randomUUID(), // ✅ SAFE & BUILD-FRIENDLY
+        id: crypto.randomUUID(), 
       };
 
       state.list.unshift(issue);

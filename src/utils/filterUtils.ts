@@ -40,19 +40,19 @@ export function filterAndSortIssues(issues: Issue[], filters: FilterState): Issu
   filtered.sort((a, b) => {
     switch (filters.sortBy) {
       case "newest":
-        // Sort by creation date - newest first
+        
         return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       
       case "oldest":
-        // Sort by creation date - oldest first
+       
         return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
       
       case "priority-high":
-        // Sort by priority - High to Low
+        
         return priorityOrder[b.priority] - priorityOrder[a.priority];
       
       case "priority-low":
-        // Sort by priority - Low to High
+        
         return priorityOrder[a.priority] - priorityOrder[b.priority];
       
       default:
