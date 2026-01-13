@@ -1,12 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import type { RootState } from "../redux/Store";
+import type { RootState } from "../redux/store";
 
 export default function IssueDetails() {
   const { issueId } = useParams<{ issueId: string }>();
   const navigate = useNavigate();
   const issue = useSelector((state: RootState) => 
-    state.issues.list.find(i => String(i.id) === issueId)
+    state.issues.list.find((i) => String(i.id) === issueId)
   );
 
   if (!issue) {

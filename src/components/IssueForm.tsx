@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { addIssue } from "../redux/Slices/issuesSlice";
 import { issueSchema, type IssueFormData } from "../schemas/issueSchema";
-import type { AppDispatch } from "../redux/Store";
+import type { AppDispatch } from "../redux/store";
 import type { Issue } from "../types/types";
 import Toast from "./Toast";
 

@@ -2,7 +2,8 @@ import { useEffect, useState, useCallback, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIssues } from "../redux/Slices/issuesThunk";
 import { resetLocal } from "../redux/Slices/issuesSlice";
-import type { RootState, AppDispatch } from "../redux/Store";
+import type { RootState, AppDispatch } from "../redux/store";
+import type { Issue } from "../types/types";
 import IssueList from "../components/IssueList";
 import FilterBar, { type FilterState } from "../components/FilterBar";
 import EmptyState from "../components/EmptyState";
@@ -24,7 +25,7 @@ export default function IssuesPage() {
   const [filters, setFilters] = useState<FilterState>(initialFilters);
 
   useEffect(() => {
-    const hasApiIssues = list.some((issue) => !issue.isLocal);
+    const hasApiIssues = list.some((issue: Issue) => !issue.isLocal);
     if (!hasApiIssues) {
       dispatch(fetchIssues());
     }
@@ -38,7 +39,7 @@ export default function IssuesPage() {
 
   // Memoize counts
   const localIssuesCount = useMemo(
-    () => list.filter((i) => i.isLocal).length,
+    () => list.filter((i: Issue) => i.isLocal).length,
     [list]
   );
 
