@@ -6,9 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { issueSchema, type IssueFormData } from "../schemas/issueSchema";
 import { useState } from "react";
 import Toast from "./Toast";
+import type { AppDispatch } from "../redux/Store"; 
+import type { Issue } from "../types/types"; 
 
 export default function IssueForm() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();  
   const navigate = useNavigate();
   const [showToast, setShowToast] = useState(false);
 
@@ -29,7 +31,7 @@ export default function IssueForm() {
 
   const onSubmit = async (data: IssueFormData) => {
     try {
-      const newIssue = {
+      const newIssue: Omit<Issue, "id"> & { id: string } = { 
         id: `local-${Date.now()}`,
         title: data.title,
         body: data.description,
@@ -41,12 +43,13 @@ export default function IssueForm() {
 
       dispatch(addIssue(newIssue));
       
-     
+      // Show success toast
       setShowToast(true);
       
-      
+      // Reset form
       reset();
       
+      // Navigate after short delay to show toast
       setTimeout(() => {
         navigate("/");
       }, 1000);
