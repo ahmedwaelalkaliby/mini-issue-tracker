@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/purity */
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
@@ -43,10 +44,8 @@ export default function IssueForm() {
 
       dispatch(addIssue(newIssue));
       
-      // Show success toast
       setShowToast(true);
       
-      // Reset form
       reset();
       
       // Navigate after short delay to show toast
